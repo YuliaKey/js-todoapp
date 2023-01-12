@@ -1,0 +1,4 @@
+1/ en terminal taper git init
+2/ creer a la racine fichier .gitignore
+3/ dans ce fichier mettre la liste de dossier voluminaux (node_modules/ par example) qu'on va pas voir dans le github parce que re[pository est limite en espace 
+4/ lancer la commande : "git add ." (avec point!)
