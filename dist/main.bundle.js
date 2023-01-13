@@ -82,7 +82,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\nul {\n    padding:0;\n    list-style: none;\n}\n\np {\n    margin: 0;\n}\n\n\nli .todo {\n    flex: 0 0 20px;\n    height: 20px;\n    border-radius: 30px;\n    margin-right: 15px;\n    border: 2px solid #333;\n}\n\nli .todo.done {\n    background-color: #333;\n    \n}\n\n", "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":";AACA;IACI,SAAS;IACT,gBAAgB;AACpB;;AAEA;IACI,SAAS;AACb;;;AAGA;IACI,cAAc;IACd,YAAY;IACZ,mBAAmB;IACnB,kBAAkB;IAClB,sBAAsB;AAC1B;;AAEA;IACI,sBAAsB;;AAE1B","sourcesContent":["\nul {\n    padding:0;\n    list-style: none;\n}\n\np {\n    margin: 0;\n}\n\n\nli .todo {\n    flex: 0 0 20px;\n    height: 20px;\n    border-radius: 30px;\n    margin-right: 15px;\n    border: 2px solid #333;\n}\n\nli .todo.done {\n    background-color: #333;\n    \n}\n\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "\nul {\n    padding:0;\n    list-style: none;\n}\n\np {\n    margin: 0;\n}\n\ninput {\n    border-radius: 5px;\n    outline: none;\n}\n\nli {\n    padding: 10px;\n    border-radius: 5px;\n}\n\nli:hover {\n    background-color: #ddd;\n    cursor: pointer;\n}\n\n\nli .todo {\n    flex: 0 0 20px;\n    height: 20px;\n    border-radius: 30px;\n    margin-right: 15px;\n    border: 2px solid #333;\n}\n\nli .todo.done {\n    background-color: #333;\n    \n}\n\n", "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":";AACA;IACI,SAAS;IACT,gBAAgB;AACpB;;AAEA;IACI,SAAS;AACb;;AAEA;IACI,kBAAkB;IAClB,aAAa;AACjB;;AAEA;IACI,aAAa;IACb,kBAAkB;AACtB;;AAEA;IACI,sBAAsB;IACtB,eAAe;AACnB;;;AAGA;IACI,cAAc;IACd,YAAY;IACZ,mBAAmB;IACnB,kBAAkB;IAClB,sBAAsB;AAC1B;;AAEA;IACI,sBAAsB;;AAE1B","sourcesContent":["\nul {\n    padding:0;\n    list-style: none;\n}\n\np {\n    margin: 0;\n}\n\ninput {\n    border-radius: 5px;\n    outline: none;\n}\n\nli {\n    padding: 10px;\n    border-radius: 5px;\n}\n\nli:hover {\n    background-color: #ddd;\n    cursor: pointer;\n}\n\n\nli .todo {\n    flex: 0 0 20px;\n    height: 20px;\n    border-radius: 30px;\n    margin-right: 15px;\n    border: 2px solid #333;\n}\n\nli .todo.done {\n    background-color: #333;\n    \n}\n\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -960,6 +960,7 @@ const createTodoElement = (todo, index) => {
   deleteBtn.classList.add("btn", "btn-danger", "mx-2");
   deleteBtn.innerText = "Supprimer";
   deleteBtn.addEventListener('click', event => {
+    event.stopPropagation(); // on arrete la propagation de l'event
     todos.splice(index, 1);
     displayTodos();
   });
@@ -968,6 +969,10 @@ const createTodoElement = (todo, index) => {
         <p class="w-100">${todo.text}</p>
         <button class="btn btn-primary mx-2">Editer</button>
     `;
+  li.addEventListener('click', event => {
+    todos[index].done = !todos[index].done;
+    displayTodos();
+  });
   li.appendChild(deleteBtn);
   return li;
 };

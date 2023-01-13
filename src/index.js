@@ -32,6 +32,7 @@ const createTodoElement = (todo, index) => {
 
     deleteBtn.innerText = "Supprimer";
     deleteBtn.addEventListener('click', (event) => {
+        event.stopPropagation(); // on arrete la propagation de l'event
         todos.splice(index, 1);
         displayTodos();
     })
@@ -41,6 +42,12 @@ const createTodoElement = (todo, index) => {
         <p class="w-100">${todo.text}</p>
         <button class="btn btn-primary mx-2">Editer</button>
     `
+
+    li.addEventListener('click', (event) => {
+        todos[index].done = !todos[index].done;
+        displayTodos();
+    })
+
     li.appendChild(deleteBtn);
 
     return li;
