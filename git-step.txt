@@ -3,3 +3,5 @@
 3/ dans ce fichier mettre la liste de dossier voluminaux (node_modules/ par example) qu'on va pas voir dans le github parce que re[pository est limite en espace 
 4/ lancer la commande : "git add ." (avec point! pour ajouter tout)
 5/ commiter : lancer la commande : git commit -m "message" (message peut etre: feat: mise en place du formulairem par example
+6/ On doit lier ce projet avec le repository : "git remote add origin https://github.com/jerachid/js-todoapp.git"
+7/ ancer la commande :  git push -u origin master
