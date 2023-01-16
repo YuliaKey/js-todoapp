@@ -948,7 +948,8 @@ form.addEventListener('submit', event => {
   input.value = '';
   const newTodo = {
     text: todoText,
-    done: false
+    done: false,
+    editMode: false
   };
   todos.push(newTodo); // on ajoute cette nouvelle tache dans la liste des taches todos
   displayTodos();
@@ -998,6 +999,18 @@ const createTodoEditElement = (todo, index) => {
   input.value = todo.text;
   saveBtn.innerText = "Sauvegarder";
   cancelBtn.innerText = "Annuler";
+  cancelBtn.addEventListener('click', event => {
+    event.stopPropagation();
+    todos[index].editMode = !todos[index].editMode;
+    displayTodos();
+  });
+  saveBtn.addEventListener('click', event => {
+    event.stopPropagation();
+    const value = input.value;
+    todos[index].text = value;
+    todos[index].editMode = false;
+    displayTodos();
+  });
   li.append(input, cancelBtn, saveBtn);
   return li;
 };
